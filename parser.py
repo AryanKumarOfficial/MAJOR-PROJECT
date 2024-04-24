@@ -20,17 +20,21 @@ params = {
 }
 
 
+
 def fetchAndSaveToFile(url,path):
     try:
+        print("Fetching data from ",url)
         r= requests.get(url,params=params)
         with open(path, "w",encoding="utf-8") as f:
                 # print(r.text)
                 f.write(r.text)
+        print("Data saved to ",path)
 
 
-print("Fetching data from ", url);
+    except Exception as e:
+        print("Error fetching data from ",url)
+        print(e)
+        return
 
 
 fetchAndSaveToFile(url,"data/flipkart_iphone.html" )
-
-print("Data fetched and saved to file")
