@@ -34,10 +34,7 @@ def scrapData(file, db_name, collection_name):
             comment_text = comment.get_text(separator=' ', strip=True)
             all_words.extend(comment_text.split())
 
-        # Store words in MongoDB collection
-        for word in all_words:
-            collection.insert_one({"file": file, "word": word})
-
+        
         return (all_words, title, total_reviews)
     except Exception as e:
         logger.error(f"Error processing file {file}: {e}")
